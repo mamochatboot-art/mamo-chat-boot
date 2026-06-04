@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "products": {
+      "title": "Products",
+      "description": "Store inventory products list with Syrian currency conversions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "priceUSD": { "type": "number" },
+        "priceSYP": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "name", "priceUSD", "priceSYP", "status"]
+    },
+    "knowledgeBase": {
+      "title": "KnowledgeBase",
+      "description": "Merchant question and answer pairs configured for chatbot fallbacks",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "question": { "type": "string" },
+        "answer": { "type": "string" }
+      },
+      "required": ["id", "question", "answer"]
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Store general information and preferences",
+      "type": "object",
+      "properties": {
+        "storeName": { "type": "string" },
+        "welcomeMessage": { "type": "string" },
+        "phone": { "type": "string" },
+        "whatsApp": { "type": "string" },
+        "address": { "type": "string" }
+      },
+      "required": ["storeName", "welcomeMessage"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "products",
+      "description": "List of available products in Syrian and Dollar currencies"
+    },
+    "/knowledgeBase/{knowledgeId}": {
+      "schema": "knowledgeBase",
+      "description": "Pairs of locally answered questions for chatbot and service operations"
+    },
+    "/settings/global": {
+      "schema": "settings",
+      "description": "Global shop metadata config and contact handles"
+    }
+  }
+}

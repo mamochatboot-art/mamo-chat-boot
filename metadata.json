@@ -1,0 +1,6 @@
+{
+  "name": "Mamo Store Merchant & Smart Support Portal",
+  "description": "بوابة متكاملة لإدارة صالة وبضائع شركة مامو - الرقة، مع إمكانية تحديث الأسعار والتحقق الفوري ومزامنة بضائع المعرض رقمياً مع الرد التلقائي والدعم دون إنترنت.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

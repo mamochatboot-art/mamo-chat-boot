@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/schemas/config.schema.json",
+  "appId": "com.mamostore.app",
+  "productName": "متجر مامو",
+  "copyright": "Copyright © 2026 Mamo Store",
+  "directories": {
+    "output": "dist-electron",
+    "buildResources": "assets"
+  },
+  "files": [
+    "dist/**/*",
+    "electron/**/*",
+    "package.json"
+  ],
+  "win": {
+    "target": "nsis"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "MamoStore",
+    "installerIcon": "assets/icon.ico",
+    "uninstallerIcon": "assets/icon.ico",
+    "installerHeaderIcon": "assets/icon.ico"
+  }
+}

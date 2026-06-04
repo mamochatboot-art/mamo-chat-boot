@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper validations
+    function isValidId(id) { 
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); 
+    }
+    function isSignedIn() { 
+      return request.auth != null; 
+    }
+
+    // Products: readable by everyone, editable by store manager only
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    // KnowledgeBase: readable by everyone, editable by store manager only
+    match /knowledgeBase/{knowledgeId} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    // Settings: readable by everyone, editable by store manager only
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+    
+    // Chat logs tracking: logs can be written by clients, read/analyzed by store manager
+    match /chat_logs/{logId} {
+      allow create: if true;
+      allow read, update, delete: if isSignedIn();
+    }
+  }
+}
